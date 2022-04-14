@@ -4,7 +4,7 @@ const B_HEIGHT = 460
 const B_WIDTH = 700
 var SPEED = 9
 
-export var initial_angle = -120  # in degrees
+export var initial_angle = 45  # in degrees
 var rng = RandomNumberGenerator.new()
 
 var velocity = Vector2.ONE
