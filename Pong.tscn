@@ -16,8 +16,8 @@ extents = Vector2( 8, 8 )
 extents = Vector2( 8, 32 )
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 80.0
-height = 16.0
+radius = 83.0
+height = 66.0
 
 [node name="Pong" type="Node2D"]
 __meta__ = {
@@ -86,7 +86,7 @@ shape = SubResource( 3 )
 [node name="rayfaker" type="Area2D" parent="CPU"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CPU/rayfaker"]
-position = Vector2( -8, 48 )
+position = Vector2( -1, 0 )
 shape = SubResource( 4 )
 
 [connection signal="area_entered" from="CPU/rayfaker" to="CPU" method="_on_rayfaker_area_entered"]

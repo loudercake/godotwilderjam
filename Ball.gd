@@ -1,16 +1,26 @@
 extends KinematicBody2D
-var xdir = 1
-var ydir = 1
-var vel = 7
 
-func _process(delta):
-	position.x += xdir * vel
-	position.y += ydir * vel
-	if position.y >= 460:
-		ydir = -1
+const B_HEIGHT = 460
+const B_WIDTH = 700
+const SPEED = 7
+
+export var initial_angle = 5  # in degrees
+
+var velocity = Vector2.ONE
+
+func _ready():
+	var angle = deg2rad(initial_angle)
+	velocity = Vector2(cos(angle), sin(angle)) * SPEED
+
+
+func _process(_delta):
+	position.x += velocity.x
+	position.y += velocity.y
+	if position.y >= B_HEIGHT:
+		velocity.y = -SPEED
 	if position.y <= 0:
-		ydir = 1
-	if position.x >= 700:
-		xdir = -1
+		velocity.y = SPEED
+	if position.x >= B_WIDTH:
+		velocity.x = -SPEED
 	if position.x <= 0:
-		xdir = 1
+		velocity.x = SPEED
