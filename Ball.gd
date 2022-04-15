@@ -3,7 +3,7 @@ extends KinematicBody2D
 const B_HEIGHT = 460
 const B_WIDTH = 700
 var SPEED = 9
-
+onready var sound = $Sound
 export var initial_angle = 45  # in degrees
 var rng = RandomNumberGenerator.new()
 
@@ -15,6 +15,7 @@ func _ready():
 
 
 func _process(_delta):
+	print(sound.playing)
 	if Paused.paused == false:
 		clamp(SPEED,7,12)
 		print(SPEED)
@@ -22,9 +23,13 @@ func _process(_delta):
 		position.y += velocity.y
 		if position.y >= B_HEIGHT:
 			velocity.y = -SPEED-rand_range(1, 3)
+			sound.play()
 		if position.y <= 0:
 			velocity.y = SPEED+rand_range(1, 3)
+			sound.play()
 		if position.x >= B_WIDTH:
 			velocity.x = -SPEED-rand_range(1, 3)
+			sound.play()
 		if position.x <= 0:
 			velocity.x = SPEED+rand_range(1, 3)
+			sound.play()
