@@ -1,5 +1,6 @@
 extends KinematicBody2D
 signal game_stopc
+signal win
 const ANGLE_THRESHOLD = 0.7
 const DANGER_ZONE_RADIUS = 200
 const RANDOM_MOVE_PROB = 0.3
@@ -17,6 +18,10 @@ onready var ball = get_tree().get_current_scene().get_node("Ball")
 onready var rayfaker = $rayfaker
 func _process(delta):
 	PointsUI.text.text = str(points)
+	if Paused.paused == false:
+		if points == 5:
+			emit_signal("win")
+
 func _physics_process(delta):
 	if Paused.paused == false:
 		if not in_danger():

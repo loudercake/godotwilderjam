@@ -1,5 +1,6 @@
 extends KinematicBody2D
 signal game_stopp
+signal win
 onready var Tweenie = $Tween
 onready var PointsUI = get_tree().get_current_scene().get_node("Score")
 var speed = 5
@@ -15,6 +16,8 @@ func _process(delta):
 			position.y -= speed
 		if position.y <= 0:
 			position.y += speed
+		if points == 3:
+			emit_signal("win")
 
 
 func _on_Area2D_area_entered(area):

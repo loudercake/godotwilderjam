@@ -6,8 +6,14 @@ onready var timer = $Timer
 func _ready():
 	Player.connect("game_stopp",self,"game_stop")
 	Player.connect("game_stopp",self,"losep")
+	Player.connect("win",self,"winp")
 	CPU.connect("game_stopc",self,"game_stop")
 	CPU.connect("game_stopc",self,"losec")
+	CPU.connect("win",self,"winc")
+func winp():
+	get_tree().change_scene("res://PlayerWins.tscn")
+func winc():
+	get_tree().change_scene("res://CPUWins.tscn")
 func losep():
 	CPU.points +=1
 func losec():
