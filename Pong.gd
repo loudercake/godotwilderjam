@@ -26,7 +26,12 @@ func game_stop():
 
 
 func _on_Timer_timeout():
-	var angle = rng.randi_range(45,85)
+	var angle = 0
+	var side = rng.randi_range(1,2)
+	if side == 1:
+		angle = rng.randi_range(40,60)
+	else:
+		angle = rng.randi_range(120,140)
 	Ball.global_position = Vector2(320,248)
 	Ball.velocity = Vector2(cos(angle), sin(angle)) * Ball.SPEED
 	Player.position = Vector2(64,224)

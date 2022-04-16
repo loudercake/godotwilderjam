@@ -1,5 +1,4 @@
 extends Node2D
-
 onready var timer = $Timer
 func _ready():
 	timer.start(1.5)
